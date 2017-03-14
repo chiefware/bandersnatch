@@ -12,8 +12,9 @@ rm -f /lib/systemd/system/basic.target.wants/*;\
 rm -f /lib/systemd/system/anaconda.target.wants/*;
 VOLUME [ "/sys/fs/cgroup" ]
 RUN yum -y install epel-release; \
-yum clean all
+yum clean all 
 RUN yum -y install openssh-server openssh-clients python-pip; \
 systemctl enable sshd.service
+RUN pip install -r https://bitbucket.org/pypi/bandersnatch/raw/stable/requirements.txt 
 EXPOSE 22
 CMD ["/usr/sbin/init"]
