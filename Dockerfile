@@ -16,6 +16,6 @@ yum clean all
 RUN yum -y install openssh-server openssh-clients python-pip; \
 systemctl enable sshd.service
 RUN pip install -r https://bitbucket.org/pypa/bandersnatch/raw/stable/requirements.txt
-RUN bandersnatch mirror
+RUN bandersnatch mirror;exit 0
 EXPOSE 22
 CMD ["/usr/sbin/init"]
