@@ -13,9 +13,7 @@ rm -f /lib/systemd/system/anaconda.target.wants/*;
 VOLUME [ "/sys/fs/cgroup" ]
 RUN yum -y install epel-release; \
 yum clean all 
-RUN yum -y install openssh-server openssh-clients python-pip; \
-systemctl enable sshd.service
+RUN yum -y install python-pip
 RUN pip install -r https://bitbucket.org/pypa/bandersnatch/raw/stable/requirements.txt
 RUN bandersnatch mirror;exit 0
-EXPOSE 22
 CMD ["/usr/sbin/init"]
